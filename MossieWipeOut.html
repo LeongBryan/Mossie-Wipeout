@@ -1,0 +1,444 @@
+<html>
+<head>
+        <meta name='viewport' 
+        content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' 
+   />
+
+   <link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet'>
+   <link href='https://fonts.googleapis.com/css?family=Bubblegum Sans' rel='stylesheet'>
+
+
+<style>
+h1{
+    font-family: 'Bubblegum Sans';font-size: 5vw; padding:0cm;
+}
+h2{
+    font-family: 'Bubblegum Sans';font-size: 4vw; padding:0cm;
+}
+p{
+    font-family: 'Bubblegum Sans';font-size: 2vw;
+}
+body{
+    /* background-image: url("https://espressoscience.files.wordpress.com/2017/12/mosquito.jpg"); */
+
+    background-color: rgb(252, 221, 221);
+    background-repeat:no-repeat;
+    background-position:right top;
+    background-attachment:scroll;
+    
+}
+* {
+  box-sizing: border-box;
+}
+
+.header {
+  padding: 3vw 3vw;
+  text-align: center;
+  background: #580000;
+  color: white;
+  font-family:"Impact"; 
+  font-size: 6vw;
+  text-shadow: -0.5vw 0.5vw #000000;
+  
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 25%;
+  padding: 2vw;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+.footer {
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+.btn {
+    background-color: rgb(199, 199, 199);
+    padding: 14px 28px;
+    font-size:2vw;
+    font-family:'Bubblegum Sans';
+    cursor: pointer;
+    display: inline-block;
+}
+.btn:hover{
+    background:rgb(255, 243, 243);
+}
+.swatbtn{
+    padding: 20px 50px; 
+    font-size: 3vw;
+}
+.swatbtn:hover{
+    background:rgb(255, 53, 53);
+}
+.claimbtn{
+    padding: 14px 28px; 
+    font-size: 2vw;
+}
+.claimbtn:hover{
+    background:rgb(255, 206, 116);
+}
+
+
+
+</style>
+</head>
+
+<body>
+    <script src="MozzieWipeOutWeapons.js"></script>
+
+    <h1 class="header">The Comprehensive Mozzie Wipeout</h1> 
+    <p style="margin: 1vw"> There are few things in existence more reprehensible than mosquitoes. 
+        Their very survival is dependant on sucking the blood of other living things.
+        Various scientists will point to the importance of mosquitoes to our ecosystems - this is <b>Fake News</b>.
+        Among the diseases mosquitoes take pleasure in spreading are: Malaria, dengue, Japanese encephalitis,
+        Zika virus, etc.
+        Do not let yourself feel sympathy for these creatures, they belong crushed beneath our swatters as 
+        <b>our</b> blood spurts from their wretched bodies. 
+
+
+    </p>
+    <h1 style="margin: 1vw"> Here's what we're gonna do: </h1>
+    <p style="margin: 1vw"> I'm going to pay you to kill mosquitoes. For a start, you get 3 cents for every mosquito you kill.
+        It doesn't seem like a lot but trust me it adds up. You'll get bonuses along the way if and when
+        I see some worthwhile achievement. Remember, mosquitoes are killing people <b>at this very moment</b>,
+        so time is of the essence.
+    </p>
+    <p> <span id="endMessage"></span></p>
+    <div class="flex-container">
+        <div class="column" style="background-color:#bbb">
+                <h2>Stats</h2>
+                <p> <b>Mozzies in Existence: <br></b><span id="totalMozzies"> 70000000000000000 </span> </p>
+                <p> <b>Hours Gone By: </b><span id="time"></span> </p>
+                <p> <b>Title: </b><span id="title"> 0</span> </p>
+                <p> <b>Mozzies Killed: <br></b><span id="mozziesKilled"> 0</span> </p>
+                <p> <b>Cash Per Kill: $</b><span id="cashPerKill"> 0</span> </p>
+                <p> <b>Average Mozzies Killed Per Hour: <br></b><span id="averageKillsPerHour"> 0</span> </p>
+
+        </div>
+        <div class="column" style="background-color:#ccc">
+                <h2> <b> Assets</b> </h2>
+                <button class="btn swatbtn" type="button" onclick=Swat()> Swat! </button><br>
+                <p> <b>Cash: </b>$<span id="totalCash"> 20.00 </span> </p>
+                <p> <b> Unclaimed Kills: <br></b> <span id="unclaimedKills"> 0</span> </p>
+                <button class="btn claimbtn" type="button" onclick=claimKills()> Claim Bounty <br> ($<span id="unclaimedBounty"> </span>) </button>
+                <span id="autoClaimButton"></span>
+                <p> <b>Primary Weapon: </b> <span id="weaponName"> </span> </p>
+                <p> <b>Secondary Weapon: </b> <span id="secondaryWeaponName"> </span> </p>
+                <p> <b>Pets: </b> <span id="pets"></span> </p>
+                <p> <b>School of Swat <br>Kill-Multiplier: </b> <span id="killMultiplier"></span> </p>
+                <p> <b>Mozzies Killed Per Swat: </b> <span id="killPerSwatFinal"></span></p>
+        </div>
+        <div class="column" style="background-color:#ddd">
+                <h2> Shop</h2>
+                <p> Primary Weapon:</p>
+                <button class="btn" type="button" onclick=buyWeapon()> <span id="weaponShop"> </span> </button><br>
+                <p> Secondary Weapon:</p>
+                <button class="btn" type="button" onclick=buySecondaryWeapon()> <span id="secondaryWeaponShop"> </span> </button><br>
+                <p> Pets:</p>
+                <button class="btn" type="button" onclick=buyPet()> <span id="petShop"> </span> </button><br>
+                
+                <p> Upgrades:</p>
+            
+        </div>
+        <div class="column" style="background-color:aliceblue">
+                <h2> School of Swat</h2>
+                <button class="btn" type="button" onclick=trainStealth()> Train Stealth <span id="stealthCost"></span> </button> 
+                <p> Stealth Level: <span id="stealth"> </span> </p><br>
+                <button class="btn" type="button" onclick=trainSkill()> Train Skill <span id="skillCost"></span></button> 
+                <p> Skill Level: <span id="skill"> </span> </p><br>
+        </div>
+
+        <div class="footer" style="background-color:#f1f1f1">
+            <p> Total deaths amounted while you were lazily swatting: <span id="humanDeaths"></span> </p>
+        </div>
+    </div>
+
+
+</body>
+<script>
+// Insert weapons for mobile
+</script>
+<script>
+    
+    var timer = 0.00;
+    var framesPerSecond = 60;
+
+    window.onload = function(){
+    setInterval(function(){
+        timing();
+        updateHTML();
+        AutoSwat();
+        rankUp();
+        endgame();
+    }, 1000/framesPerSecond);
+    }
+
+    var humanDeaths = 0;
+    var totalMozzies = 7000000000000000;
+    var breedingRate = 66;
+    var cash = 0;
+    var cashPerKill = 0.03;
+    var killPerSwat = 1;
+    var killPerAutoSwat = 0;
+    var mozziesKilled = 0;
+    var unclaimedKills = 0;
+    var unclaimedBounty = 0;
+    var title = "Underpaid Fly Swatter Intern";
+    var weaponName = "Second-Hand Fly Swatter";
+    var weaponShop = weapons[0].name;
+    var weaponCost = 2.00;
+    var weaponindex = 0;
+    var secondaryWeaponName = "(Currently no Secondary Weapon)";
+    var secondaryWeaponShop = secondaryWeapons[0].name;
+    var secondaryWeaponCost = 999.00;
+    var secondaryWeaponIndex = 0;
+    var petShop = petlist[0].name;
+    var petCost = petlist[0].cost;
+    var petIndex = 0;
+    var skillCost = 5;
+    var stealthCost = 5;
+    var killMultiplier = 1;
+    var humanDeathsPerSec = 0.08;
+    var endMessage = "";
+
+
+function Swat(){
+    totalMozzies -= killPerSwat * killMultiplier;
+    updateMozziesKilled(killPerSwat * killMultiplier, cashPerKill);
+}
+
+function AutoSwat(){
+    totalMozzies -= Math.ceil(killPerAutoSwat);
+    updateMozziesKilled(killPerAutoSwat, cashPerKill);
+}
+
+function updateMozziesKilled(num, cashPerKill){
+    mozziesKilled += num;
+    unclaimedKills += num;
+    unclaimedBounty = unclaimedKills * cashPerKill;
+}
+
+function claimKills(){
+    cash += cashPerKill * unclaimedKills;
+    unclaimedKills = 0;
+}
+
+function timing(){
+    timer += 0.01;
+    humanDeaths += humanDeathsPerSec;
+    document.getElementById("time").innerHTML = timer.toFixed(0);
+    document.getElementById("humanDeaths").innerHTML = humanDeaths.toFixed(0);
+}
+
+function updateHTML(){
+    document.getElementById("totalMozzies").innerHTML = totalMozzies;
+    document.getElementById("mozziesKilled").innerHTML = mozziesKilled.toFixed(0);
+    document.getElementById("killPerSwatFinal").innerHTML = (killPerSwat);//*killMultiplier);
+    document.getElementById("averageKillsPerHour").innerHTML = Math.floor(mozziesKilled/timer);
+    document.getElementById("unclaimedKills").innerHTML = unclaimedKills.toFixed(0);
+    document.getElementById("unclaimedBounty").innerHTML = unclaimedBounty.toFixed(2);
+    document.getElementById("weaponName").innerHTML = weaponName;
+    document.getElementById("weaponShop").innerHTML = weaponShop + " ($" + weaponCost.toFixed(2) + ")";
+    document.getElementById("secondaryWeaponName").innerHTML = secondaryWeaponName;
+    document.getElementById("secondaryWeaponShop").innerHTML = secondaryWeaponShop + " ($" + secondaryWeaponCost.toFixed(2) + ")";
+    document.getElementById("title").innerHTML = title;
+    document.getElementById("totalCash").innerHTML = cash.toFixed(2);
+    document.getElementById("cashPerKill").innerHTML = cashPerKill.toFixed(2);
+    document.getElementById("stealth").innerHTML = stealth;
+    document.getElementById("skill").innerHTML = skill;
+    document.getElementById("stealthCost").innerHTML = "($" + stealthCost.toFixed(2) + ")";
+    document.getElementById("skillCost").innerHTML = "($" + skillCost.toFixed(2) + ")";
+    document.getElementById("killMultiplier").innerHTML = killMultiplier;
+    document.getElementById("pets").innerHTML = pets;
+    document.getElementById("petShop").innerHTML = petShop + " ($" + petCost.toFixed(2) + ")";
+    document.getElementById("endMessage").innerHTML = endMessage;
+
+}
+
+function buyWeapon(){
+    if (cash >= weapons[weaponindex].cost && weaponindex < (weapons.length-1)){
+        cash -= weapons[weaponindex].cost;
+        weaponName = weapons[weaponindex].name;
+        weaponShop = weapons[weaponindex+1].name;
+        weaponCost = weapons[weaponindex+1].cost;
+        killPerSwat = weapons[weaponindex].damage;
+        weaponindex += 1;
+    }
+
+    else if(cash >= weapons[weaponindex].cost && weaponindex == (weapons.length-1) ){
+        cash -= weapons[weaponindex].cost;
+        weaponName = weapons[weaponindex].name;
+        weaponShop = "(There exists no greater weapon than that which you possess)";
+        weaponCost = 0;
+        killPerSwat = weapons[weaponindex].damage;
+    }
+
+    else{
+        alert("Sorry, you can't afford that yet. Did you forget to claim your bounty?");
+    }
+}
+
+function buySecondaryWeapon(){
+    if (cash >= secondaryWeapons[secondaryWeaponIndex].cost && secondaryWeaponIndex < (secondaryWeapons.length-1)){
+        cash -= secondaryWeapons[secondaryWeaponIndex].cost;
+        secondaryWeaponName = secondaryWeapons[secondaryWeaponIndex].name;
+        secondaryWeaponShop = secondaryWeapons[secondaryWeaponIndex+1].name;
+        secondaryWeaponCost = secondaryWeapons[secondaryWeaponIndex+1].cost;
+        killPerAutoSwat += secondaryWeapons[secondaryWeaponIndex].damage;
+        secondaryWeaponIndex += 1;
+    }
+
+    else if(cash >= secondaryWeapons[secondaryWeaponIndex].cost && secondaryWeaponIndex == (secondaryWeapons.length-1) ){
+        cash -= secondaryWeapons[secondaryWeaponIndex].cost;
+        secondaryWeaponName = secondaryWeapons[secondaryWeaponIndex].name;
+        secondaryWeaponShop = "(There exists no greater weapon than that which you possess)";
+        secondaryWeaponCost = 0;
+        killPerAutoSwat += secondaryWeapons[secondaryWeaponIndex].damage;
+    }
+
+    else{
+        alert("Sorry, you can't afford that yet. Did you forget to claim your bounty?");
+    }
+}
+
+function buyPet(){
+    if (cash >= petlist[petIndex].cost && petIndex < (petlist.length-1)){
+        cash -= petlist[petIndex].cost;
+        if (petIndex == 0){
+            pets = petlist[petIndex].name
+        }
+        else{
+            pets += (", " + petlist[petIndex].name);
+        }
+        petShop = petlist[petIndex+1].name;
+        petCost = petlist[petIndex+1].cost;
+        killPerAutoSwat += petlist[petIndex].damage;
+        petIndex += 1;
+    }
+
+    else if(cash >= petlist[petIndex].cost && petIndex == (petlist.length-1) ){
+        cash -= petlist[petIndex].cost;
+        pets += (", " + petlist[petIndex].name);
+        killPerAutoSwat += petlist[petIndex].damage;
+    }
+
+    else{
+        alert("Sorry, you can't afford that yet. Did you forget to claim your bounty?");
+    }
+}
+
+function trainSkill(){
+    if (cash >= skillCost && skill <70){
+        cash -= skillCost;
+        skill += 1;
+        skillCost *= 1.5;
+        killMultiplier = Math.ceil((skill + stealth)/3);
+    }
+    else{
+        alert("Sorry, you can't afford that yet. Keep swatting!");
+    }
+}
+
+function trainStealth(){
+    if (cash >= stealthCost && stealth <70){
+        cash -= stealthCost;
+        stealth += 1;
+        stealthCost *= 1.5;
+        killMultiplier = Math.ceil((skill + stealth)/3);
+    }
+    else{
+        alert("Sorry, you can't afford that yet. Keep swatting!");
+    }
+}
+
+function rankUp(){
+    if (mozziesKilled >= 100000000000){
+        cashPerKill = 0.99;
+        title = "Hero of Humanity";
+    }
+
+    else if (mozziesKilled >= 10000000000){
+        cashPerKill = 0.65;
+        title = "Grand Sensei of the School of Swat";
+    }
+
+    else if (mozziesKilled >= 1000000000){
+        cashPerKill = 0.45;
+        title = "Wizard of Swat, Apprentice of Dark Magic";
+    }
+
+    else if (mozziesKilled >= 100000000){
+        cashPerKill = 0.32;
+        title = "Undisputed Olympic Swat Champion";
+    }
+
+    else if (mozziesKilled >= 10000000){
+        cashPerKill = 0.19;
+        title = "The Fearsome Mozcateer";
+    }
+
+    else if (mozziesKilled >= 1000000){
+        cashPerKill = 0.13;
+        title = "Indie-Swatter-Jones";
+    }
+
+    else if (mozziesKilled >= 100000){
+        cashPerKill = 0.11;
+        title = "Rising-Star Swat Sensation";
+    }
+
+    else if (mozziesKilled >= 25000){
+        cashPerKill = 0.09;
+        title = "Senior Swat Executive";
+    }
+
+    else if (mozziesKilled >= 500){
+        cashPerKill = 0.04;
+        title = "Reasonably-Paid Swat Associate";
+    }
+    else{
+        cashPerKill = 0.03;
+        title = "Underpaid Fly Swatter Intern";
+    }
+}
+
+function endgame(){
+    if (totalMozzies <= 0){
+        killPerAutoSwat = 0;
+        killPerSwat = 0;
+        totalMozzies = 0;
+        humanDeathsPerSec = 0;
+        endMessage = "Wow, you've killed all 7000000000000000 Mozzies! What a champ. Sadly, " + humanDeaths + 
+        "died before you did it. Still, the world is a better place because of you. Fantastic. Just great. Seriously, really awesome. Great job! Go get yourself a nice holiday. You've earned it. What a champ. Wow.";
+    }
+}
+
+</script>
+
+<br><br><br><br><br><br><br><br><br><br>
+
+</html>

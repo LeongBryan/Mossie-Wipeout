@@ -87,6 +87,9 @@ body{
 .btn:hover{
     background:rgb(255, 243, 243);
 }
+.btn:active{
+    background:rgb(138, 138, 138);
+}
 .swatbtn{
     padding: 20px 50px; 
     font-size: 3vw;
@@ -94,12 +97,18 @@ body{
 .swatbtn:hover{
     background:rgb(255, 53, 53);
 }
+.swatbtn:active{
+    background:rgb(255, 152, 152);
+}
 .claimbtn{
     padding: 14px 28px; 
     font-size: 2vw;
 }
 .claimbtn:hover{
-    background:rgb(255, 206, 116);
+    background:rgb(250, 197, 100);
+}
+.claimbtn:active{
+    background:rgb(248, 217, 159);
 }
 
 
@@ -115,7 +124,7 @@ body{
         Their very survival is dependant on sucking the blood of other living things.
         Various scientists will point to the importance of mosquitoes to our ecosystems - this is <b>Fake News</b>.
         Among the diseases mosquitoes take pleasure in spreading are: Malaria, dengue, Japanese encephalitis,
-        Zika virus, etc.
+        Zika virus, and many more.
         Do not let yourself feel sympathy for these creatures, they belong crushed beneath our swatters as 
         <b>our</b> blood spurts from their wretched bodies. 
 
@@ -125,7 +134,7 @@ body{
     <p style="margin: 1vw"> I'm going to pay you to kill mosquitoes. For a start, you get 3 cents for every mosquito you kill.
         It doesn't seem like a lot but trust me it adds up. You'll get bonuses along the way if and when
         I see some worthwhile achievement. Remember, mosquitoes are killing people <b>at this very moment</b>,
-        so time is of the essence.
+        so <b>get swatting</b>.
     </p>
     <p> <span id="endMessage"></span></p>
     <div class="flex-container">
@@ -136,6 +145,7 @@ body{
                 <p> <b>Title: </b><span id="title"> 0</span> </p>
                 <p> <b>Mozzies Killed: <br></b><span id="mozziesKilled"> 0</span> </p>
                 <p> <b>Cash Per Kill: $</b><span id="cashPerKill"> 0</span> </p>
+                <p> <b>Cash Per Swat: $</b><span id="cashPerSwat"> 0</span> </p>
                 <p> <b>Average Mozzies Killed Per Hour: <br></b><span id="averageKillsPerHour"> 0</span> </p>
 
         </div>
@@ -161,7 +171,7 @@ body{
                 <p> Pets:</p>
                 <button class="btn" type="button" onclick=buyPet()> <span id="petShop"> </span> </button><br>
                 
-                <p> Upgrades:</p>
+                <!-- <p> Upgrades:</p> -->
             
         </div>
         <div class="column" style="background-color:aliceblue">
@@ -192,17 +202,17 @@ let weapon1 = new Weapon("Daiso Fly-Swatter", 2, 2.00);
 let weapon2 = new Weapon("Ordinary Fly-Swatter", 5, 6.99);
 let weapon3 = new Weapon("Ergonomic Fly-Swatter", 12, 17.99);
 let weapon4 = new Weapon("Super Light-Weight Fly-Swatter", 24, 69.99);
-let weapon5 = new Weapon("Extremely Long and Large Fly-Swatter", 49, 209.99);
+let weapon5 = new Weapon("Extremely Long and Large Fly-Swatter", 49, 259.99);
 let weapon6 = new Weapon("Laser-grid 'Insta-Death' Fly-Swatter", 88, 777.00);
-let weapon7 = new Weapon("Katana-style Fly-Swatter", 275, 1750.00);
-let weapon8 = new Weapon("Wrath and Vengeance Fly-Swatter", 1050, 5399.99);
-let weapon9 = new Weapon("Twin-headed Iguana-Emblem Fly-Swatter", 4789, 39999.99);
+let weapon7 = new Weapon("Katana-style Fly-Swatter", 275, 2750.00);
+let weapon8 = new Weapon("Wrath and Vengeance Fly-Swatter", 1050, 7399.99);
+let weapon9 = new Weapon("Twin-headed Iguana-Emblem Fly-Swatter", 4789, 29999.99);
 let weapon10 = new Weapon("Triple-headed Frog-Emblem Fly-Swatter", 10000, 174000.00);
-let weapon11 = new Weapon("Nine-headed Spider-Emblem Fly-Swatter", 17171, 950000.00);
-let weapon12 = new Weapon("Black Magic Fly-Swatter", 82600, 8800000.00);
-let weapon13 = new Weapon("Mighty Wand of Swat", 640000, 22500000.00);
-let weapon14 = new Weapon("Fly-Swatter of Fire and Ice", 16000000, 863600000.00);
-let weapon15 = new Weapon("The Wizard of Moz Fly-Swatter", 400000000, 24894000000.00);
+let weapon11 = new Weapon("Nine-headed Spider-Emblem Fly-Swatter", 17171, 700000.00);
+let weapon12 = new Weapon("Black Magic Fly-Swatter", 25600, 2300000.00);
+let weapon13 = new Weapon("Mighty Wand of Swat", 640000, 42500000.00);
+let weapon14 = new Weapon("Fly-Swatter of Fire and Ice", 16000000, 7636000000.00);
+let weapon15 = new Weapon("The Wizard of Moz Fly-Swatter", 400000000, 248940000000.00);
 let weapon16 = new Weapon("Protector of All that is Good and Right Fly-Swatter", 100000000000, 99999999999999.99);
 
 const weapons = [weapon1, weapon2, weapon3, weapon4, weapon5, weapon6, weapon7, weapon8, weapon9, weapon10, weapon11, weapon12, weapon13, weapon14, weapon15, weapon16];
@@ -240,11 +250,11 @@ class Pet{
 
 let pet1 = new Pet("Iggy the Iguana", 0.05, 5.45);
 let pet2 = new Pet("Finnick the Frog", 0.1, 12.25);
-let pet3 = new Pet("PakPak the Farm Chicken", 1, 42.50);
-let pet4 = new Pet("PokPok the Farm Chicken", 1, 42.50);
-let pet5 = new Pet("PekPek the Farm Chicken", 1, 42.50);
-let pet6 = new Pet("Gyarados the Farm Duck", 1, 42.50);
-let pet7 = new Pet("Annie the Mozzie-eating Bat", 5, 125.00);
+let pet3 = new Pet("PakPak the Farm Chicken", 1, 44.44);
+let pet4 = new Pet("PokPok the Farm Chicken", 1, 66.66);
+let pet5 = new Pet("PekPek the Farm Chicken", 1, 88.88);
+let pet6 = new Pet("Gyarados the Farm Duck", 1, 111.11);
+let pet7 = new Pet("Annie the Mozzie-eating Bat", 5, 175.00);
 let pet8 = new Pet("Mozibayne the Malaysian Jumping Spider", 5000, 120000)
 let pet9 = new Pet("Oh-Ho the West Sumatran Mozzie-Hunting White-tailed Phoenix", 100000000, 1444000000000.50)
 let pet10 = new Pet("Rachie the Sonic Hamster", 10000000000, 9999999999999.99)
@@ -268,6 +278,7 @@ var autoclaim = false;
     setInterval(function(){
         timing();
         updateHTML();
+        updateCashPerSwat()
         AutoSwat();
         rankUp();
         endgame();
@@ -280,6 +291,7 @@ var autoclaim = false;
     var cash = 0;
     var cashPerKill = 0.03;
     var killPerSwat = 1;
+    var cashPerSwat = 0.03;
     var killPerAutoSwat = 0;
     var mozziesKilled = 0;
     var unclaimedKills = 0;
@@ -345,6 +357,7 @@ function updateHTML(){
     document.getElementById("title").innerHTML = title;
     document.getElementById("totalCash").innerHTML = cash.toFixed(2);
     document.getElementById("cashPerKill").innerHTML = cashPerKill.toFixed(2);
+    document.getElementById("cashPerSwat").innerHTML = cashPerSwat.toFixed(2);
     document.getElementById("stealth").innerHTML = stealth;
     document.getElementById("skill").innerHTML = skill;
     document.getElementById("stealthCost").innerHTML = "($" + stealthCost.toFixed(2) + ")";
@@ -501,6 +514,10 @@ function rankUp(){
         cashPerKill = 0.03;
         title = "Underpaid Fly Swatter Intern";
     }
+}
+
+function updateCashPerSwat(){
+    cashPerSwat = killPerSwat * cashPerKill * killMultiplier
 }
 
 function endgame(){

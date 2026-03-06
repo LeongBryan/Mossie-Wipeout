@@ -2,7 +2,7 @@
 
 A tiny browser idle game inspired by the old paperclip-style nonsense loop. 
 
-Playable: at [https://leongbryan.github.io/Mossie-Wipeout/](https://leongbryan.github.io/Mossie-Wipeout/)
+Playable at: [https://leongbryan.github.io/Mossie-Wipeout/](https://leongbryan.github.io/Mossie-Wipeout/)
 
 ## What Changed
 

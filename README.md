@@ -1,12 +1,8 @@
 # Mossie Wipeout Deluxe
 
-A tiny browser idle game inspired by the old paperclip-style nonsense loop.
+A tiny browser idle game inspired by the old paperclip-style nonsense loop. 
 
-## Play
-
-- Open `index.html` in any modern browser.
-- Click `Swat!` (or press `Space`) to squash mozzies.
-- Claim bounty, buy absurd upgrades, train at the School of Swat, and adopt deeply overqualified pets.
+Playable: at [https://leongbryan.github.io/Mossie-Wipeout/](https://leongbryan.github.io/Mossie-Wipeout/)
 
 ## What Changed
 
